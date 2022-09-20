@@ -88,27 +88,27 @@ int main(void)
   /* USER CODE BEGIN 2 */
   int8_t count = 0;
   //HAL_GPIO_WritePin(GPIOA, L1_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, L0_Pin, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(GPIOA,
 		  L1_Pin | L2_Pin | L3_Pin |
 		  L4_Pin | L5_Pin | L6_Pin |
 		  L7_Pin | L8_Pin | L9_Pin |
-		  L10_Pin | L11_Pin | L12_Pin, GPIO_PIN_SET);
+		  L10_Pin | L11_Pin, GPIO_PIN_SET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  HAL_Delay(500);
 	  if (count == 11) {
-		  count = -1;
-		  HAL_GPIO_WritePin(GPIOA, L1_Pin, GPIO_PIN_RESET);
-		  HAL_GPIO_WritePin(GPIOA, L1_Pin << 11, GPIO_PIN_SET);
-	  } else {
-		  HAL_GPIO_WritePin(GPIOA, L1_Pin << count, GPIO_PIN_SET);
-		  HAL_GPIO_WritePin(GPIOA, L1_Pin << (count+1), GPIO_PIN_RESET);
+		  HAL_GPIO_WritePin(GPIOA, L0_Pin << 11, GPIO_PIN_SET);
 	  }
-	  count++;
-	  HAL_Delay(200);
+	  else if (count < 11){
+		  HAL_GPIO_WritePin(GPIOA, L0_Pin << count, GPIO_PIN_SET);
+		  HAL_GPIO_WritePin(GPIOA, L0_Pin << (count+1), GPIO_PIN_RESET);
+		  count++;
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -164,16 +164,16 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, L1_Pin|L2_Pin|L3_Pin|L4_Pin
-                          |L5_Pin|L6_Pin|L7_Pin|L8_Pin
-                          |L9_Pin|L10_Pin|L11_Pin|L12_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, L0_Pin|L1_Pin|L2_Pin|L3_Pin
+                          |L4_Pin|L5_Pin|L6_Pin|L7_Pin
+                          |L8_Pin|L9_Pin|L10_Pin|L11_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : L1_Pin L2_Pin L3_Pin L4_Pin
-                           L5_Pin L6_Pin L7_Pin L8_Pin
-                           L9_Pin L10_Pin L11_Pin L12_Pin */
-  GPIO_InitStruct.Pin = L1_Pin|L2_Pin|L3_Pin|L4_Pin
-                          |L5_Pin|L6_Pin|L7_Pin|L8_Pin
-                          |L9_Pin|L10_Pin|L11_Pin|L12_Pin;
+  /*Configure GPIO pins : L0_Pin L1_Pin L2_Pin L3_Pin
+                           L4_Pin L5_Pin L6_Pin L7_Pin
+                           L8_Pin L9_Pin L10_Pin L11_Pin */
+  GPIO_InitStruct.Pin = L0_Pin|L1_Pin|L2_Pin|L3_Pin
+                          |L4_Pin|L5_Pin|L6_Pin|L7_Pin
+                          |L8_Pin|L9_Pin|L10_Pin|L11_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
