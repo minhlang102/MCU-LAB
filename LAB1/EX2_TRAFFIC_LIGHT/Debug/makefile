@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (9-2020-q2-update)
+# Toolchain: GNU Tools for STM32 (10.3-2021.10)
 ################################################################################
 
 -include ../makefile.init
@@ -12,7 +12,6 @@ RM := rm -rf
 -include Drivers/STM32F1xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
--include subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -44,6 +43,9 @@ BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ART
 EXECUTABLES += \
 EX2_TRAFFIC_LIGHT.elf \
 
+MAP_FILES += \
+EX2_TRAFFIC_LIGHT.map \
+
 SIZE_OUTPUT += \
 default.size.stdout \
 
@@ -53,9 +55,6 @@ EX2_TRAFFIC_LIGHT.list \
 OBJCOPY_HEX += \
 EX2_TRAFFIC_LIGHT.hex \
 
-OBJCOPY_BIN += \
-EX2_TRAFFIC_LIGHT.bin \
-
 
 # All Target
 all: main-build
@@ -64,8 +63,8 @@ all: main-build
 main-build: EX2_TRAFFIC_LIGHT.elf secondary-outputs
 
 # Tool invocations
-EX2_TRAFFIC_LIGHT.elf: $(OBJS) $(USER_OBJS) C:\Users\minhl\OneDrive\Documents\STUDY\HK221\Vi\ xu\ li\SMT32\LAB1\EX2_TRAFFIC_LIGHT\STM32F103C6UX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "EX2_TRAFFIC_LIGHT.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\minhl\OneDrive\Documents\STUDY\HK221\Vi xu li\SMT32\LAB1\EX2_TRAFFIC_LIGHT\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EX2_TRAFFIC_LIGHT.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+EX2_TRAFFIC_LIGHT.elf EX2_TRAFFIC_LIGHT.map: $(OBJS) $(USER_OBJS) C:\Users\minhl\OneDrive\Documents\STUDY\HK221\Vi\ xu\ li\STM32\ 1.10.1\LAB1\EX2_TRAFFIC_LIGHT\STM32F103C6UX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "EX2_TRAFFIC_LIGHT.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\minhl\OneDrive\Documents\STUDY\HK221\Vi xu li\STM32 1.10.1\LAB1\EX2_TRAFFIC_LIGHT\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EX2_TRAFFIC_LIGHT.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -84,17 +83,12 @@ EX2_TRAFFIC_LIGHT.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS
 	@echo 'Finished building: $@'
 	@echo ' '
 
-EX2_TRAFFIC_LIGHT.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "EX2_TRAFFIC_LIGHT.bin"
-	@echo 'Finished building: $@'
-	@echo ' '
-
 # Other Targets
 clean:
-	-$(RM) $(OBJCOPY_HEX)$(SIZE_OUTPUT)$(OBJDUMP_LIST)$(EXECUTABLES)$(OBJS)$(S_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(OBJCOPY_BIN) EX2_TRAFFIC_LIGHT.elf
+	-$(RM) EX2_TRAFFIC_LIGHT.elf EX2_TRAFFIC_LIGHT.hex EX2_TRAFFIC_LIGHT.list EX2_TRAFFIC_LIGHT.map default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'
@@ -103,6 +97,6 @@ fail-specified-linker-script-missing:
 warn-no-linker-script-specified:
 	@echo 'Warning: No linker script specified. Check the linker settings in the build configuration.'
 
-.PHONY: all clean dependents fail-specified-linker-script-missing warn-no-linker-script-specified
+.PHONY: all clean dependents main-build fail-specified-linker-script-missing warn-no-linker-script-specified
 
 -include ../makefile.targets
