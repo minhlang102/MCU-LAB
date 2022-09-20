@@ -62,52 +62,6 @@ void display7SEG(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, int8_t counter) {
 		HAL_GPIO_WritePin(GPIOx, GPIO_Pin << i, !((segmentArray[counter]>>i)&0x1));
 	}
 }
-void display7SEG(int8_t counter) {
-	switch(counter) {
-	case 0:
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-		break;
-	case 1:
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1 | GPIO_PIN_2, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6, GPIO_PIN_SET);
-		break;
-	case 2:
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_6, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2 | GPIO_PIN_5, GPIO_PIN_SET);
-		break;
-	case 3:
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_6, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4 | GPIO_PIN_5, GPIO_PIN_SET);
-		break;
-	case 4:
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_5 | GPIO_PIN_6, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 | GPIO_PIN_3 | GPIO_PIN_4, GPIO_PIN_SET);
-		break;
-	case 5:
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_5 | GPIO_PIN_6, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1 | GPIO_PIN_4, GPIO_PIN_SET);
-		break;
-	case 6:
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_SET);
-		break;
-	case 7:
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6, GPIO_PIN_SET);
-		break;
-	case 8:
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6, GPIO_PIN_RESET);
-		break;
-	case 9:
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_5 | GPIO_PIN_6, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
-		break;
-	default:
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6, GPIO_PIN_SET);
-
-	}
-}
 /* USER CODE END 0 */
 
 /**
@@ -148,8 +102,7 @@ int main(void)
   while (1)
   {
 	  if (counter >= 10) counter = 0;
-	  //display7SEG(counter++);
-	  display(GPIOB, GPIO_PIN_0, counter++);
+	  display7SEG(GPIOB, GPIO_PIN_0, counter++);
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
