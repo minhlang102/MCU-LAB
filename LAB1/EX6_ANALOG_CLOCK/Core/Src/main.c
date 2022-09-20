@@ -87,7 +87,6 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
   int8_t count = 0;
-  //HAL_GPIO_WritePin(GPIOA, L1_Pin, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(GPIOA, L0_Pin, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(GPIOA,
 		  L1_Pin | L2_Pin | L3_Pin |
