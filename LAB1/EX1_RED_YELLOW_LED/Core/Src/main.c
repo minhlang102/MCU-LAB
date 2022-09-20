@@ -88,15 +88,15 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 1);
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, 0);
+  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, 1);
+  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, 0);
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
-	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_6);
+	  HAL_GPIO_TogglePin(GPIOA, LED_RED_Pin);
+	  HAL_GPIO_TogglePin(GPIOA, LED_YELLOW_Pin);
 	  HAL_Delay(2000);
     /* USER CODE BEGIN 3 */
   }
