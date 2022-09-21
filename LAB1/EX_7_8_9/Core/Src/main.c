@@ -62,10 +62,12 @@ void clearAllClock() {
 }
 
 void setNumberOnClock(int num) {
+	if (num<0 || num>11) return;
 	HAL_GPIO_WritePin(GPIOA, L0_Pin << num, GPIO_PIN_RESET);
 }
 
 void clearNumberOnClock(int num) {
+	if (num<0 || num >11) return;
 	HAL_GPIO_WritePin(GPIOA, L0_Pin << num, GPIO_PIN_SET);
 }
 /* USER CODE END 0 */
