@@ -101,12 +101,11 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    /* USER CODE END WHILE */
+    /* USER CODE BEGIN 3 */
 	  if (counter >= 10) counter = 0;
 	  display7SEG(GPIOB, GPIO_PIN_0, counter++);
 	  HAL_Delay(1000);
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }

@@ -108,6 +108,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    /* USER CODE END WHILE */
+    /* USER CODE BEGIN 3 */
 	  switch(count) {
 	  case 3:
 		  time_A = 2;
@@ -143,9 +145,6 @@ int main(void)
 	  time_A--;
 	  time_B--;
 	  count++;
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }

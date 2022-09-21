@@ -99,6 +99,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    /* USER CODE END WHILE */
+    /* USER CODE BEGIN 3 */
 	  HAL_Delay(500);
 	  if (count == 11) {
 		  HAL_GPIO_WritePin(GPIOA, L0_Pin << 11, GPIO_PIN_SET);
@@ -108,9 +110,6 @@ int main(void)
 		  HAL_GPIO_WritePin(GPIOA, L0_Pin << (count+1), GPIO_PIN_RESET);
 		  count++;
 	  }
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }

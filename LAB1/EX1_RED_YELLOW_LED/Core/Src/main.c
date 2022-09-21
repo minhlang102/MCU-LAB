@@ -95,10 +95,10 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+    /* USER CODE BEGIN 3 */
 	  HAL_GPIO_TogglePin(GPIOA, LED_RED_Pin);
 	  HAL_GPIO_TogglePin(GPIOA, LED_YELLOW_Pin);
 	  HAL_Delay(2000);
-    /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }

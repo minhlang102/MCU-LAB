@@ -109,6 +109,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+    /* USER CODE BEGIN 3 */
 	  HAL_Delay(1000);
 	  if (sec == 60) {
 		  sec = -1;
@@ -130,7 +131,6 @@ int main(void)
 	  setNumberOnClock(sec/5);
 	  setNumberOnClock(min/5);
 	  setNumberOnClock(hrs);
-    /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
